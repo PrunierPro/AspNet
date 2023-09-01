@@ -1,18 +1,29 @@
 ﻿@{
-    ViewData["Title"] = "Contacts";
+    ViewData["Title"] = "Contact";
     Layout = "_Layout";
-    var id = ViewContext.RouteData.Values["id"];
 }
+
+@model Contact
 
 <h1>Contact</h1>
 
 @{
-    if(id is not null)
-    {
-        <p>You searched for id @id</p>
-    } else
-    {
-        <p>You did not specify an ID</p>
-    }
+    <table class="table">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">FName</th>
+            <th scope="col">LName</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+        </tr>
+        <tr>
+            <td scope="row">@Model.Id</td>
+            <td scope="row">@Model.FName</td>
+            <td scope="row">@Model.LName</td>
+            <td scope="row">@Model.Email</td>
+            <td scope="row">@Model.Phone</td>
+        </tr>
+    </table>
 }
+
 <a asp-action="Index">Return</a>

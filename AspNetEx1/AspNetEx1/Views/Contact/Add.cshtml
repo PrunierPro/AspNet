@@ -1,9 +1,24 @@
 ﻿@{
-    ViewData["Title"] = "Contacts";
+    ViewData["Title"] = "Add";
     Layout = "_Layout";
 }
 
 <h1>Add</h1>
 
-<p>This is the page for adding a contact.</p>
+<p>
+    This is the page for adding a contact.<br />
+</p>
+
+<form>
+    <label for="lname">Name: </label>
+    <input type="text" name="lname" id="lname" placeholder="Doe" /><br />    
+    <label for="fname">First Name: </label>
+    <input type="text" name="fname" id="fname" placeholder="John" /><br />    
+    <label for="email">First Name: </label>
+    <input type="email" name="email" id="email" placeholder="john.doe@email.com" /><br />    
+    <label for="phone">First Name: </label>
+    <input type="tel" name="phone" id="phone" placeholder="(+33) 01 02 03 04 05 06" /><br />
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
 <a asp-action="Index">Return</a>
