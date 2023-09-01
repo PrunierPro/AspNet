@@ -4,19 +4,19 @@ namespace AspNetEx1.Controllers
 {
     public class ContactController : Controller
     {
-        public string Show(int? id)
+        public IActionResult Show()
         {
-            return $"I am the page for showing a specific contact {(id is not null ? $"| ID : {id}" : "")}";
+            return View();
         }
 
-        public string Add()
+        public IActionResult Add()
         {
-            return "I am the page for adding a contact";
+            return View();
         }
 
-        public string Index()
+        public IActionResult Index()
         {
-            return "I am the page for listing all contacts";
+            return View();
         }
     }
 }

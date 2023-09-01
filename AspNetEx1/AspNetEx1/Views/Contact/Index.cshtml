@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Contacts";
+    Layout = "_Layout";
+}
+
+<h1>Contacts</h1>
+
+<p>This is the page for showing all contacts</p>
+
+<ul>
+    <h3>Actions:</h3>
+    <li>
+        <a asp-action="Show">Show (no id)</a>
+    </li>
+    <li>
+        <a asp-action="Show" asp-route-id="3">Show (id 3)</a>
+    </li>
+    <li>
+        <a asp-action="Add">Add</a>
+    </li>
+</ul>
