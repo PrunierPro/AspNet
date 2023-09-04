@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Details";
+    Layout = "_Layout";
+}
+
+@model Marmoset
+
+<h1>Marmoset Details</h1>
+
+@{
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Name</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Model.Age</h6>
+            <p class="card-text">@Model.Name is Marmoset #@Model.Id. It is @Model.Age years old.</p>
+        </div>
+    </div>
+
+}
+
+<a class="btn btn-dark" asp-action="Index">Return</a>

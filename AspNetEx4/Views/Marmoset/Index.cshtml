@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Marmosets";
+    Layout = "_Layout";
+    List<Marmoset> marmosets = ViewBag.Marmosets;
+}
+
+<h1>Marmosets</h1>
+<table class="table">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+    </tr>
+    @foreach (Marmoset m in marmosets)
+    {
+        <tr>
+            <th scope="row">@m.Id</th>
+            <td>@m.Name</td>
+            <td>@m.Age</td>
+            <td><a class="btn btn-outline-info" asp-action="Details" asp-route-id="@m.Id">Show Details</a></td>
+        </tr>
+    }
+</table>
+<a type="button" asp-action="CreateRandom" class="btn btn-primary">Create a random Marmoset</a>
