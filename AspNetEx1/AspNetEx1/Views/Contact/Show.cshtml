@@ -8,22 +8,16 @@
 <h1>Contact Details</h1>
 
 @{
-    <table class="table">
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">FName</th>
-            <th scope="col">LName</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone</th>
-        </tr>
-        <tr>
-            <td scope="row">@Model.Id</td>
-            <td scope="row">@Model.FName</td>
-            <td scope="row">@Model.LName</td>
-            <td scope="row">@Model.Email</td>
-            <td scope="row">@Model.Phone</td>
-        </tr>
-    </table>
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">@Model.LName</h5>
+            <h6 class="card-subtitle mb-2 text-muted">@Model.FName</h6>
+            <p class="card-text">@Model.FName @Model.LName is contact #@Model.Id</p>
+            <a href="#" class="card-link">@Model.Email</a>
+            <a href="#" class="card-link">@Model.Phone</a>
+        </div>
+    </div>
+
 }
 
-<a asp-action="Index">Return</a>
+<a class="btn btn-dark" asp-action="Index">Return</a>

@@ -1,5 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Add";
+    var status = ViewData["Status"];
+    var routeID = ViewData["RouteId"];
     Layout = "_Layout";
 }
 
@@ -9,16 +11,22 @@
     This is the page for adding a contact.<br />
 </p>
 
-<form>
-    <label for="lname">Name: </label>
-    <input type="text" name="lname" id="lname" placeholder="Doe" /><br />    
-    <label for="fname">First Name: </label>
-    <input type="text" name="fname" id="fname" placeholder="John" /><br />    
-    <label for="email">First Name: </label>
-    <input type="email" name="email" id="email" placeholder="john.doe@email.com" /><br />    
-    <label for="phone">First Name: </label>
-    <input type="tel" name="phone" id="phone" placeholder="(+33) 01 02 03 04 05 06" /><br />
+@if(status is not null){
+    <p style="color:lightgreen">
+        Contact created with ID <a asp-action="Show" asp-route-id="@routeID">@routeID</a>
+    </p>
+}
+
+<form asp-action="Add">
+    <label for="fname" class="form-label">First Name: </label>
+    <input type="text" name="fname" id="fname" placeholder="John" required class="form-text" /><br />
+    <label for="lname" class="form-label">Last Name: </label>
+    <input type="text" name="lname" id="lname" placeholder="Doe" required class="form-text"/><br />    
+    <label for="email" class="form-label">Email: </label>
+    <input type="text" name="email" id="email" placeholder="john.doe@email.com" class="form-text" /><br />
+    <label for="phone" class="form-label">Phone: </label>
+    <input type="text" name="phone" id="phone" placeholder="(+33) 01 02 03 04 05 06" class="form-text" /><br />
     <button class="btn btn-primary" type="submit">Submit</button>
 </form>
 
-<a asp-action="Index">Return</a>
+<a class="btn btn-dark" asp-action="Index">Return</a>

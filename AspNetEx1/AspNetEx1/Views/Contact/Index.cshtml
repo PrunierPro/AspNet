@@ -12,31 +12,18 @@
         <th scope="col">LName</th>
         <th scope="col">Email</th>
         <th scope="col">Phone</th>
+        <th scope="col">Details</th>
     </tr>
     @foreach(Contact c in contacts)
     {
         <tr>
-            <td scope="row"><a asp-action="Show" asp-route-id="@c.Id" title="Details">@c.Id</a></td>
-            <td scope="row">@c.FName</td>
-            <td scope="row">@c.LName</td>
-            <td scope="row">@c.Email</td>
-            <td scope="row">@c.Phone</td>
+            <th scope="row">@c.Id</th>
+            <td>@c.FName</td>
+            <td>@c.LName</td>
+            <td>@c.Email</td>
+            <td>@c.Phone</td>
+            <td><a class="btn btn-outline-info" asp-action="Show" asp-route-id="@c.Id">Show Details</a></td>
         </tr>
     }
 </table>
-
-<ul>
-    <h3>Actions:</h3>
-    <!---<form asp-action="Show" method="post">
-        <label>Show</label><br />
-        <label for="id">Enter an id: </label>
-        <input type="number" name="id" id="id" />
-        <button type="submit" class="btn btn-primary" asp-action="Show">Go</button>
-    </form>--->
-   <!-- <li>
-        <a asp-action="Show">Details</a>
-    </li> -->
-    <li>
-        <a asp-action="Add">Add</a>
-    </li>
-</ul>
+<a type="button" asp-action="Add" class="btn btn-primary">Add a contact</a>
