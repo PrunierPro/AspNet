@@ -6,22 +6,26 @@ namespace AspNetEx4.Controllers
 {
     public class MarmosetController : Controller
     {
-        private FakeMarmosetDb _marmosetDb;
+        //EX 4
+        //private FakeMarmosetDb _marmosetDb;
 
-        public MarmosetController(FakeMarmosetDb marmosetDb)
+        //EX 5
+        private ApplicationDbContext _marmosetDbContext;
+
+        public MarmosetController(ApplicationDbContext marmosetDbContext)
         {
-            _marmosetDb = marmosetDb;
+            _marmosetDbContext = marmosetDbContext;
         }
 
         public IActionResult Index()
         {
-            ViewBag.Marmosets = _marmosetDb.GetAll();
+            ViewBag.Marmosets = _marmosetDbContext.Marmosets.ToList();
             return View();
         }
 
         public IActionResult Details(int id)
         {
-            Marmoset m = _marmosetDb.GetById(id);
+            Marmoset m = _marmosetDbContext.Marmosets.Find(id);
             return View(m);
         }
 
@@ -30,8 +34,9 @@ namespace AspNetEx4.Controllers
             Random rand = new Random();
             int age = rand.Next(1, 10);
             string name = new string(Enumerable.Repeat("ABCDEFGHJIKLMNOPQRSTUVWXYZ", rand.Next(1, 10)).Select(s => s[rand.Next(s.Length)]).ToArray());
-            int id = _marmosetDb.GetAll().Count;
-            _marmosetDb.Add(new Marmoset { Id = id, Name = name, Age = age });
+            //int id = _marmosetDbContext.Marmosets.ToList().Count;
+            _marmosetDbContext.Marmosets.Add(new Marmoset { Name = name, Age = age });
+            _marmosetDbContext.SaveChanges();
             Response.Redirect("/Marmoset");
         }
     }

@@ -11,7 +11,11 @@ namespace AspNetEx4
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
-            builder.Services.AddSingleton<FakeMarmosetDb>();
+            //EX 4
+            //builder.Services.AddSingleton<FakeMarmosetDb>();
+
+            //EX 5
+            builder.Services.AddDbContext<ApplicationDbContext>();
 
             var app = builder.Build();
 
