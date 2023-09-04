@@ -16,7 +16,7 @@
     @foreach(Contact c in contacts)
     {
         <tr>
-            <td scope="row">@c.Id</td>
+            <td scope="row"><a asp-action="Show" asp-route-id="@c.Id" title="Details">@c.Id</a></td>
             <td scope="row">@c.FName</td>
             <td scope="row">@c.LName</td>
             <td scope="row">@c.Email</td>
@@ -33,9 +33,9 @@
         <input type="number" name="id" id="id" />
         <button type="submit" class="btn btn-primary" asp-action="Show">Go</button>
     </form>--->
-    <li>
+   <!-- <li>
         <a asp-action="Show">Details</a>
-    </li>
+    </li> -->
     <li>
         <a asp-action="Add">Add</a>
     </li>

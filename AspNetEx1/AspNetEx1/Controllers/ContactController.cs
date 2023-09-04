@@ -6,14 +6,11 @@ namespace AspNetEx1.Controllers
     public class ContactController : Controller
     {
 
-        public IActionResult Show()
+        List<Contact> fakeContacts = new List<Contact>(new Contact[] { new Contact() { Id = 0, FName = "Joe", LName = "Doe" }, new Contact() { Id = 1, FName = "Jane", LName = "Doe" } });
+
+        public IActionResult Show(int id = 1)
         {
-            Contact contact = new Contact()
-            {
-                Id = 1,
-                FName = "John",
-                LName = "Doe"
-            };
+            Contact contact = fakeContacts[id];
             return View(contact);
         }
 
@@ -24,20 +21,8 @@ namespace AspNetEx1.Controllers
 
         public IActionResult Index()
         {
-            Contact contact1 = new Contact()
-            {
-                Id = 1,
-                FName = "John",
-                LName = "Doe"
-            };           
-            Contact contact2 = new Contact()
-            {
-                Id = 2,
-                FName = "Jane",
-                LName = "Doe"
-            };
-            List<Contact> contacts = new List<Contact>(new Contact[] {contact1, contact2 });
-            ViewBag.Contacts = contacts;
+
+            ViewBag.Contacts = fakeContacts;
             return View();
         }
     }
