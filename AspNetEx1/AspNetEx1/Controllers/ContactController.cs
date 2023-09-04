@@ -8,9 +8,16 @@ namespace AspNetEx1.Controllers
 {
     public class ContactController : Controller
     {
+        private FakeContactDb _contacts;
+
+        public ContactController(FakeContactDb contacts)
+        {
+            _contacts = contacts;
+        }
+
         public IActionResult Show(int id = 1)
         {
-            Contact contact = FakeContactDb.Get(id);
+            Contact contact = _contacts.Get(id);
             return View(contact);
         }
 
@@ -18,9 +25,9 @@ namespace AspNetEx1.Controllers
         {
             if(fname is not null && lname is not null)
             {
-                FakeContactDb.Add(new Contact() { Id = FakeContactDb.Count, FName = fname, LName = lname, Email = email, Phone = phone });
+                ViewData["RouteId"] = _contacts.GetAll().Count;
+                _contacts.Add(new Contact() { Id = _contacts.GetAll().Count, FName = fname, LName = lname, Email = email, Phone = phone });
                 ViewData["Status"] = 201;
-                ViewData["RouteId"] = FakeContactDb.Count-1;
             }
             return View();
         }
@@ -28,7 +35,7 @@ namespace AspNetEx1.Controllers
         public IActionResult Index()
         {
 
-            ViewBag.Contacts = FakeContactDb.Contacts;
+            ViewBag.Contacts = _contacts.GetAll();
             return View();
         }
     }

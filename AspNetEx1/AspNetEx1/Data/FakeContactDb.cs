@@ -3,19 +3,23 @@ using Microsoft.AspNetCore.SignalR;
 
 namespace AspNetEx1.Data
 {
-    public static class FakeContactDb
+    public class FakeContactDb
     {
-        static public List<Contact> Contacts { get; } = new List<Contact>(new Contact[] { new Contact() { Id = 0, FName = "John", LName = "Doe" }, new Contact() { Id = 1, FName = "Jane", LName = "Doe" } });
-        static public int Count { get => Contacts.Count; }
+        private List<Contact> _contacts = new List<Contact>(new Contact[] { new Contact() { Id = 0, FName = "John ", LName = "Doe" }, new Contact() { Id = 1, FName = "Jane", LName = "Doe" } });
 
-        public static Contact Get(int id)
+        public Contact Get(int id)
         {
-            return Contacts[id];
+            return _contacts[id];
         }
 
-        public static void Add(Contact c)
+        public List<Contact> GetAll()
         {
-            Contacts.Add(c);
+            return _contacts;
+        }
+
+        public void Add(Contact c)
+        {
+            _contacts.Add(c);
         }
     }
 }

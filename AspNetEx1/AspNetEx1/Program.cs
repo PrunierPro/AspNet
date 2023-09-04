@@ -1,3 +1,5 @@
+using AspNetEx1.Data;
+
 namespace AspNetEx1
 {
     public class Program
@@ -8,6 +10,8 @@ namespace AspNetEx1
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddSingleton<FakeContactDb>();
 
             var app = builder.Build();
 
