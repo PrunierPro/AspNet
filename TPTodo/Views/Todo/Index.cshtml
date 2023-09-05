@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Todo";
+    Layout = "_Layout";
+    List<Todo> tasks = ViewBag.Tasks;
+}
+
+<h1>Todo List</h1>
+<a asp-action="AddTask" class="btn btn-success">Add a task</a>
+<table class="table">
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Task title</th>
+        <th scope="col">Task description</th>
+        <th scope="col">Status</th>
+    </tr>
+    @{
+        foreach (Todo t in tasks)
+        {
+            <tr>
+                <th scope="row">@t.Id</th>
+                <td>@t.Title</td>
+                <td>@t.Description</td>
+                <td>
+                    <div class="dropdown">
+                        @{
+                            if (t.Status.Equals(TodoStatus.IN_PROGRESS))
+                            {
+                                <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">In progress...</button>
+                            } else if (t.Status.Equals(TodoStatus.DONE))
+                            {
+                                <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Done!</button>
+                            }
+                        }
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" asp-action="ChangeStatus" asp-route-id="1">In Progress</a>
+                            <a class="dropdown-item" asp-action="ChangeStatus" asp-route-id="2">Done</a>
+                            <a class="dropdown-item" asp-action="Delete" asp-route-id="@t.Id">Delete</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        }
+    }
+</table>

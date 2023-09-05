@@ -5,7 +5,9 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetEx1", "AspNetEx1\AspNetEx1\AspNetEx1.csproj", "{53EC9AB9-4C37-4ED1-A729-D72B8D0AECE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspNetEx4", "AspNetEx4\AspNetEx4.csproj", "{1B7CDCEE-5290-454B-B02B-8CBB979C962A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AspNetEx4", "AspNetEx4\AspNetEx4.csproj", "{1B7CDCEE-5290-454B-B02B-8CBB979C962A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TPTodo", "TPTodo\TPTodo.csproj", "{78253E7D-FF04-4DB8-B4AC-E6B8DD69A6BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1B7CDCEE-5290-454B-B02B-8CBB979C962A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B7CDCEE-5290-454B-B02B-8CBB979C962A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B7CDCEE-5290-454B-B02B-8CBB979C962A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78253E7D-FF04-4DB8-B4AC-E6B8DD69A6BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78253E7D-FF04-4DB8-B4AC-E6B8DD69A6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78253E7D-FF04-4DB8-B4AC-E6B8DD69A6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78253E7D-FF04-4DB8-B4AC-E6B8DD69A6BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
