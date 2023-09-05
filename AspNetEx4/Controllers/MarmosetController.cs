@@ -1,5 +1,6 @@
 ﻿using AspNetEx4.Data;
 using AspNetEx4.Models;
+using AspNetEx4.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetEx4.Controllers
@@ -10,22 +11,24 @@ namespace AspNetEx4.Controllers
         //private FakeMarmosetDb _marmosetDb;
 
         //EX 5
-        private ApplicationDbContext _marmosetDbContext;
+        //private ApplicationDbContext _marmosetDbContext;
 
-        public MarmosetController(ApplicationDbContext marmosetDbContext)
+        private MarmosetRepository _repository;
+
+        public MarmosetController(MarmosetRepository repository)
         {
-            _marmosetDbContext = marmosetDbContext;
+            _repository = repository;
         }
 
         public IActionResult Index()
         {
-            ViewBag.Marmosets = _marmosetDbContext.Marmosets.ToList();
+            ViewBag.Marmosets = _repository.GetAll();
             return View();
         }
 
         public IActionResult Details(int id)
         {
-            Marmoset m = _marmosetDbContext.Marmosets.Find(id);
+            Marmoset m = _repository.GetById(id);
             return View(m);
         }
 
@@ -34,9 +37,13 @@ namespace AspNetEx4.Controllers
             Random rand = new Random();
             int age = rand.Next(1, 10);
             string name = new string(Enumerable.Repeat("ABCDEFGHJIKLMNOPQRSTUVWXYZ", rand.Next(1, 10)).Select(s => s[rand.Next(s.Length)]).ToArray());
-            //int id = _marmosetDbContext.Marmosets.ToList().Count;
-            _marmosetDbContext.Marmosets.Add(new Marmoset { Name = name, Age = age });
-            _marmosetDbContext.SaveChanges();
+            _repository.Add(new Marmoset { Name = name, Age = age });
+            Response.Redirect("/Marmoset");
+        }
+
+        public void Delete(int id)
+        {
+            _repository.Delete(id);
             Response.Redirect("/Marmoset");
         }
     }

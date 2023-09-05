@@ -1,4 +1,5 @@
 using AspNetEx4.Data;
+using AspNetEx4.Repositories;
 
 namespace AspNetEx4
 {
@@ -15,6 +16,8 @@ namespace AspNetEx4
             //builder.Services.AddSingleton<FakeMarmosetDb>();
 
             //EX 5
+            builder.Services.AddScoped<MarmosetRepository>();
+
             builder.Services.AddDbContext<ApplicationDbContext>();
 
             var app = builder.Build();
