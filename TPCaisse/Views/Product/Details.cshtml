@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Product Details";
+}
+@model Product
+
+<div class="card" style="width: 18rem;">
+    <!--<img src="..." class="card-img-top" alt="...">-->
+    <div class="card-body">
+        <h5 class="card-title">@Model.Name</h5>
+        <p class="card-text">@Model.Description</p>
+        <table class="table">
+            <tr>
+                <th scope="row">Price</th>
+                <th scope="row">Quantity</th>
+                <th scope="row">Category</th>
+            </tr>
+            <tr>
+                <td>@Model.Price</td>
+                <td>@Model.Quantity</td>
+                <td>@Model.Category.Name</td>
+            </tr>
+        </table>
+        <a href="#" class="btn btn-primary" asp-action="Index">Return to product list</a>
+    </div>
+</div>

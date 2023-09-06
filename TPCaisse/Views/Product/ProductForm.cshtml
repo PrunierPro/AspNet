@@ -1,0 +1,21 @@
+﻿@using TPCaisse.Data;
+@using TPCaisse.Repositories;
+@{
+    ViewData["Title"] = "Product Form";
+}
+@model Product
+
+<form asp-action="Submit" class="form-control">
+    <input asp-for="@Model.Id" type="number" hidden/>
+    <label asp-for="@Model.Name">Product name: </label>
+    <input asp-for="@Model.Name" type="text"/>
+    <label asp-for="@Model.Description">Description: </label>
+    <input asp-for="@Model.Description" type="text"/>
+    <label asp-for="@Model.Price">Price: </label>
+    <input asp-for="@Model.Price" type="number"/>
+    <label asp-for="@Model.Quantity">Quantity: </label>
+    <input asp-for="@Model.Quantity" type="number"/>
+    <label asp-for="@Model.Category">Category: </label>
+    @Html.DropDownListFor(Model => Model.Category, new SelectList(new ApplicationDbContext().Categories.ToList(), "Value", "Text"))
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>

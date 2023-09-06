@@ -4,15 +4,7 @@
 }
 @model Todo
 
-@{
-    if(Model is not null)
-    {
-        <h1>Update task @Model.Id</h1>
-    } else {
-        <h1>Add a task</h1>
-    }
-}
-
+<h1>@(Model is not null?"Update" : "Add") Task </h1>
 
 <form asp-action="Submit">
     <input asp-for="@Model.Id" type="number" hidden/>

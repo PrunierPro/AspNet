@@ -1,0 +1,44 @@
+﻿@{
+    ViewData["Title"] = "Product List";
+    List<Product> products = ViewBag.Products;
+}
+<h1>Products</h1>
+@if(products.Count > 0)
+{
+    <table class="table">
+        <tr scope="row">
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Category</th>
+            <th scope="col">Actions</th>
+        </tr>
+        @foreach (Product p in products)
+        {
+            <tr scope="row">
+                <th scope="col">@p.Id</th>
+                <td>@p.Name</td>
+                <td>@p.Description</td>
+                <td>@p.Price</td>
+                <td>@p.Quantity</td>
+                <td>@p.Category.Name</td>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        Actions
+                    </button>
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                        <li><a class="dropdown-item text-info" asp-action="Details" asp-route-id="@p.Id">Details</a></li>
+                        <li><a class="dropdown-item text-warning" asp-action="Update" asp-route-id="@p.Id">Update</a></li>
+                        <li><a class="dropdown-item text-danger" asp-action="Delete" asp-route-id="@p.Id">Delete</a></li>
+                    </ul>
+                </div>
+            </tr>
+        }
+    </table>
+} else
+{
+    <h3>There are no products available.</h3>
+}
+<a class="btn btn-success" asp-action="AddProduct">Add a product</a>
