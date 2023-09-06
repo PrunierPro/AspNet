@@ -20,7 +20,7 @@ namespace TPTodo.Data
                 Id = 1,
                 Title = "Testing",
                 Description = "Test if the program works",
-                Status = TodoStatus.IN_PROGRESS
+                Done = false
             };
 
             modelBuilder.Entity<Todo>().HasData(defaultTask);

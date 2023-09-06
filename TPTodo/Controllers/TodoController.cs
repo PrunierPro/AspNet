@@ -25,9 +25,33 @@ namespace TPTodo.Controllers
 
         public IActionResult Submit(Todo task)
         {
-            _repository.Add(task);
+            if(task.Id > 0)
+            {
+                _repository.Update(task);
+            }
+            else _repository.Add(task);
 
             return RedirectToAction("Index");
+        }
+
+        public IActionResult ChangeStatus(int id)
+        {
+            Todo task = _repository.GetById(id);
+            task.Done = !task.Done;
+            _repository.Update(task);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Delete(int id)
+        {
+            _repository.Delete(id);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Update(int id)
+        {
+            Todo task = _repository.GetById(id);
+            return View("Add", task);
         }
     }
 }

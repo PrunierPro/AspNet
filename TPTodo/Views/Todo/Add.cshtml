@@ -4,9 +4,28 @@
 }
 @model Todo
 
-<h1>Add a task</h1>
+@{
+    if(Model is not null)
+    {
+        <h1>Update task @Model.Id</h1>
+    } else {
+        <h1>Add a task</h1>
+    }
+}
+
+
 <form asp-action="Submit">
+    <input asp-for="@Model.Id" type="number" hidden/>
     <input asp-for="@Model.Title" type="text" placeholder="Title" class="form-text"/>
-    <input asp-for="@Model.Description" type="text" placeholder="Description" class="form-text"/>
-    <button type="submit" class="btn btn-success">Add</button>
+    <input asp-for="@Model.Description" type="text" placeholder="Description" class="form-text" />
+    <button type="submit" class="btn btn-success">Submit</button>
+    <div class="text-danger">@Html.ValidationSummary()</div>
 </form>
+
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

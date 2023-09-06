@@ -57,7 +57,7 @@ namespace TPTodo.Repositories
 
             if (taskFromDb.Title != task.Title) taskFromDb.Title = task.Title;
             if (taskFromDb.Description != task.Description) taskFromDb.Description = task.Description;
-            if (taskFromDb.Status != task.Status) taskFromDb.Status = task.Status;
+            if (taskFromDb.Done != task.Done) taskFromDb.Done = task.Done;
 
             return _dbContext.SaveChanges() > 0;
         }
