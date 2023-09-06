@@ -18,6 +18,7 @@
     <input asp-for="@Model.Id" type="number" hidden/>
     <input asp-for="@Model.Title" type="text" placeholder="Title" class="form-text"/>
     <input asp-for="@Model.Description" type="text" placeholder="Description" class="form-text" />
+    <input asp-for="@Model.Done" type="checkbox" hidden/>
     <button type="submit" class="btn btn-success">Submit</button>
     <div class="text-danger">@Html.ValidationSummary()</div>
 </form>
